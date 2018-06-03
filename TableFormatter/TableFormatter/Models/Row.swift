@@ -76,8 +76,8 @@ class Row {
                 else if alignment == .right {
                     start = start + columnLen - content.count 
                 }
-
-                result[result.count - 1].replace(string: content, at: start)
+                
+                result[result.count - 1].replace(string: content.trimFirstNewLine(), at: start)
             } // loop thru cells
             if needNewLine {
                 result.append(String.buildContent(withBound: bound))
@@ -106,8 +106,9 @@ class Row {
         
         let noCellsWithEquallySpacing = cells.reduce(true) { $0 && !$1.type.isEquallySpaced() }
         let noCellsWithExpandToFit = cells.reduce(true) { $0 && !($1.type == ColumnType.expandToFit) }
+        let totalShrinkToFixWidth = processShrinkToFixCells(pointers: &pointers)
         if !noCellsWithEquallySpacing || !noCellsWithExpandToFit {
-            let remainingSpace = bound - ((cells.count - 1) * space) - cells.reduce(0) { $0 + ($1.width(withBound: bound) ?? 0) } // find the remaing space by subtracting all seperator space count, cells width (with fixed width, ratio width, or shrink to fit width)
+            let remainingSpace = bound - ((cells.count - 1) * space) - totalShrinkToFixWidth // find the remaing space by subtracting all seperator space count, cells width (with fixed width, ratio width, or shrink to fit width)
             let totalSpacingCount = cells.reduce(0) { $0 + $1.type.getEquallySpacingFactor() }
             let equallySpacingWidth = Int(floor(Float(remainingSpace) / Float(totalSpacingCount)))
             for column in cells.enumerated() where column.element.type.getEquallySpacingFactor() != 0 {
@@ -118,22 +119,19 @@ class Row {
         // update pointers' starting position
         pointers.first?.start = 0
         for i in 1 ..< pointers.count {
-            pointers[i].start = pointers[i - 1].end + space + 1
+            pointers[i].start = pointers[i - 1].end + space
         }
         pointers.last?.end = bound // allow the last pointer to end at boundary
         
         return pointers
     }
-}
-
-class Pointer {
-    var start: Int { didSet { end = start + len } }
-    var end: Int
-    var len: Int { didSet { end = start + len } }
     
-    init(column: Cell, bound: Int) {
-        start = 0
-        len = column.estimateWidth(withBound: bound)
-        end = start + len
+    func processShrinkToFixCells(pointers: inout [Pointer]) -> Int {
+        var totalWidth = 0
+        for (index, cell) in cells.enumerated() where cell.type == .shrinkToFit {
+            pointers[index].len = cells[index].toString().count
+            totalWidth += pointers[index].len
+        }
+        return totalWidth
     }
 }

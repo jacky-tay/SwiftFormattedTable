@@ -13,6 +13,9 @@
 		2801544E20BBBBB800C1F996 /* SpanColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801544D20BBBBB800C1F996 /* SpanColumn.swift */; };
 		2801545020C15E5200C1F996 /* FillColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801544F20C15E5200C1F996 /* FillColumn.swift */; };
 		28228B1D20BA86F2008595D8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28228B1C20BA86F2008595D8 /* String+Extensions.swift */; };
+		288AE8C320C36351004CB9A8 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AE8C220C36351004CB9A8 /* Displayable.swift */; };
+		288AE8C520C36484004CB9A8 /* Character+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AE8C420C36484004CB9A8 /* Character+Extensions.swift */; };
+		288AE8C720C4A930004CB9A8 /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AE8C620C4A930004CB9A8 /* Pointer.swift */; };
 		28BA887E20BAB7E7003FA42F /* TableFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA887D20BAB7E7003FA42F /* TableFormatterTests.swift */; };
 		28BA888720BAB827003FA42F /* StringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA888620BAB827003FA42F /* StringTest.swift */; };
 		28F7DFAB20B9881D00146D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7DFAA20B9881D00146D64 /* AppDelegate.swift */; };
@@ -43,6 +46,9 @@
 		2801544D20BBBBB800C1F996 /* SpanColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanColumn.swift; sourceTree = "<group>"; };
 		2801544F20C15E5200C1F996 /* FillColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillColumn.swift; sourceTree = "<group>"; };
 		28228B1C20BA86F2008595D8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		288AE8C220C36351004CB9A8 /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
+		288AE8C420C36484004CB9A8 /* Character+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Extensions.swift"; sourceTree = "<group>"; };
+		288AE8C620C4A930004CB9A8 /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
 		28BA887B20BAB7E7003FA42F /* TableFormatterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableFormatterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BA887D20BAB7E7003FA42F /* TableFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFormatterTests.swift; sourceTree = "<group>"; };
 		28BA887F20BAB7E7003FA42F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,9 +87,10 @@
 		28228B1B20BA86E3008595D8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				28228B1C20BA86F2008595D8 /* String+Extensions.swift */,
 				2801544720BBB6F700C1F996 /* Boolean+Extensions.swift */,
+				288AE8C420C36484004CB9A8 /* Character+Extensions.swift */,
 				2801544920BBB7A600C1F996 /* Number+Extensions.swift */,
+				28228B1C20BA86F2008595D8 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -143,12 +150,14 @@
 			isa = PBXGroup;
 			children = (
 				28F7DFBD20B9885F00146D64 /* Cell.swift */,
+				288AE8C220C36351004CB9A8 /* Displayable.swift */,
 				28F7DFBF20B9886800146D64 /* Enum.swift */,
-				28F7DFC120B9889200146D64 /* Row.swift */,
-				28F7DFC320B988A700146D64 /* Table.swift */,
-				2801544B20BBB92F00C1F996 /* HeaderRow.swift */,
-				2801544D20BBBBB800C1F996 /* SpanColumn.swift */,
 				2801544F20C15E5200C1F996 /* FillColumn.swift */,
+				2801544B20BBB92F00C1F996 /* HeaderRow.swift */,
+				288AE8C620C4A930004CB9A8 /* Pointer.swift */,
+				28F7DFC120B9889200146D64 /* Row.swift */,
+				2801544D20BBBBB800C1F996 /* SpanColumn.swift */,
+				28F7DFC320B988A700146D64 /* Table.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,6 +276,9 @@
 				28228B1D20BA86F2008595D8 /* String+Extensions.swift in Sources */,
 				28F7DFC420B988A700146D64 /* Table.swift in Sources */,
 				28F7DFAD20B9881D00146D64 /* ViewController.swift in Sources */,
+				288AE8C320C36351004CB9A8 /* Displayable.swift in Sources */,
+				288AE8C720C4A930004CB9A8 /* Pointer.swift in Sources */,
+				288AE8C520C36484004CB9A8 /* Character+Extensions.swift in Sources */,
 				2801545020C15E5200C1F996 /* FillColumn.swift in Sources */,
 				28F7DFAB20B9881D00146D64 /* AppDelegate.swift in Sources */,
 				2801544A20BBB7A600C1F996 /* Number+Extensions.swift in Sources */,

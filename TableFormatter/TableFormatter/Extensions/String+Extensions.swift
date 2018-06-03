@@ -9,7 +9,12 @@
 import Foundation
 
 extension String: InstanceCell {
-    
+    func toString() -> String {
+        return self
+    }
+}
+
+extension String {
     static func buildRepeated(char: Character, withBound bound: Int) -> String {
         return String(Array(repeating: char, count: bound))
     }
@@ -24,6 +29,13 @@ extension String: InstanceCell {
         replaceSubrange(begin ..< end, with: string)
     }
     
+    func trimFirstNewLine() -> String {
+        if let firstChar = last?.unicodeScalars.first, CharacterSet.newlines.contains(firstChar) {
+            return subString(from: 0, withLen: count - 1)
+        }
+        return self
+    }
+    
     func subString(from: Int, withLen len: Int) -> String {
         let start = index(startIndex, offsetBy: from)
         let end = index(start, offsetBy: min(count - from, len)) // ensure that the end index is always within the string boundary
@@ -31,7 +43,7 @@ extension String: InstanceCell {
     }
     
     func findNextPointer(startFrom start: Int, withLen len: Int) -> Int {
-        let substring = subString(from: start, withLen: len).trimmingCharacters(in: .whitespaces)
+        let substring = subString(from: start, withLen: len).trimmingCharacters(in: .newlines)
         
         if let newLine = substring.rangeOfCharacter(from: CharacterSet.newlines) {
             return start + distance(from: substring.startIndex, to: newLine.lowerBound) + 1
@@ -40,9 +52,5 @@ extension String: InstanceCell {
             return start + distance(from: substring.startIndex, to: indexOfLastSpace.lowerBound) + 1
         }
         return start + substring.count + 1
-    }
-    
-    func toString() -> String {
-        return self
     }
 }
