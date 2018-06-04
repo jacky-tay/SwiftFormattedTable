@@ -15,6 +15,13 @@ protocol Displayable {
 typealias InstanceCell = Displayable
 
 extension Displayable {
+    
+    /// Create a Span Column object, if such Displayble is not
+    ///
+    /// - Parameters:
+    ///   - col: The number of column span
+    ///   - alignment: The text alignment
+    /// - Returns: A Span Column span
     func span(col: Int, alignment: Alignment = .left) -> SpanColumn {
         if let span = self as? SpanColumn {
             return span

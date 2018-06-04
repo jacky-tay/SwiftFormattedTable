@@ -17,6 +17,9 @@ extension Int: Number {
         return "\(self)"
     }
     
+    /// Convert int to NSNumber
+    ///
+    /// - Returns: The NSNumber of int
     func toNSNumber() -> NSNumber {
         return NSNumber(value: self)
     }
@@ -27,6 +30,9 @@ extension Int64: Number {
         return "\(self)"
     }
     
+    /// Convert int 64 to NSNumber
+    ///
+    /// - Returns: The NSNumber of int 64
     func toNSNumber() -> NSNumber {
         return NSNumber(value: self)
     }
@@ -37,6 +43,9 @@ extension Float: Number {
         return "\(self)"
     }
     
+    /// Convert float to NSNumber
+    ///
+    /// - Returns: The NSNumber of float
     func toNSNumber() -> NSNumber {
         return NSNumber(value: self)
     }
@@ -47,13 +56,18 @@ extension Double: Number {
         return "\(self)"
     }
     
+    /// Convert double to NSNumber
+    ///
+    /// - Returns: The NSNumber of double
     func toNSNumber() -> NSNumber {
         return NSNumber(value: self)
     }
 }
 
 extension Number {
-    
+    /// Convert number to dollar string
+    ///
+    /// - Returns: The dollar string
     func dollar() -> String {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current

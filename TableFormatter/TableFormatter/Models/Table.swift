@@ -17,6 +17,9 @@ class Table {
         self.rows = rows
     }
     
+    /// Print the table
+    ///
+    /// - Returns: A list of printable string array
     func print() -> [String] {
         return rows.flatMap { $0.print(withBound: bound) }
     }
