@@ -8,11 +8,11 @@ This demo is a refactor modification, since the previous code is private.
 
 ## Example
 ![original](http://www.accupos.com/wp-content/uploads/2015/11/AccuPOS-Retail-Receipt-Example.jpg)
-![demo](https://github.com/jacky-tay/SwiftFormattedTable/blob/master/Assets/demo.png)
+<img src="https://github.com/jacky-tay/SwiftFormattedTable/blob/master/Assets/demo.png" height="550"/>
 
 The receipt can be constructed as follow:
 
-```
+```swift
 let seperator: Character = "="
 let row = HeaderRow(cells: [
     Cell(content: "Brandy's General Store\n321 Any Street\nAnytown, NY 10121\n(212) 555-5555", alignment: .center)])
